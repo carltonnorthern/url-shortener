@@ -18,26 +18,10 @@ spec:
         app: demo
     spec:
       containers:
-      - image: localhost:5001/demo
+      - image: 486477420935.dkr.ecr.us-west-1.amazonaws.com/demo-repo:latest
         name: com-carltonnorthern-urlshortener-ndsqg
-        resources: {}
-status: {}
----
-apiVersion: v1
-kind: Service
-metadata:
-  creationTimestamp: null
-  labels:
-    app: demo
-  name: demo
-spec:
-  ports:
-  - name: 8080-8080
-    port: 8080
-    protocol: TCP
-    targetPort: 8080
-  selector:
-    app: demo
-  type: ClusterIP
-status:
-  loadBalancer: {}
+        ports:
+          - containerPort: 8080
+            # env:
+          # - name: JAVA_TOOL_OPTIONS
+            # value: "-Xss256K -XX:ReservedCodeCacheSize=64M -XX:MaxMetaspaceSize=64 -Xmx64M"
