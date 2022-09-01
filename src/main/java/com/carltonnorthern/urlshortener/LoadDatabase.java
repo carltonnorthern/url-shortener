@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 class LoadDatabase {
-
+    /*
     private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
     @Bean
@@ -18,5 +18,5 @@ class LoadDatabase {
             log.info("Preloading " + repository.save(new URL("https://www.facebook.com/", "burglar")));
             log.info("Preloading " + repository.save(new URL("http://www.facebook.com/", "thief")));
         };
-    }
+    }*/
 }
