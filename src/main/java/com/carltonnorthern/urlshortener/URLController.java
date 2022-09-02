@@ -34,7 +34,7 @@ class URLController {
 
     // Aggregate root
     // tag::get-aggregate-root[]
-    @GetMapping("/urls")
+    @GetMapping("/api/urls")
     CollectionModel<EntityModel<URL>> all() {
 
         List<EntityModel<URL>> urls = repository.findAll().stream()
@@ -47,7 +47,7 @@ class URLController {
     }
     // end::get-aggregate-root[]
 
-    @PostMapping("/urls")
+    @PostMapping("/api/urls")
     URL newURL(@RequestBody URL newURL) {
         return repository.save(newURL);
     }
@@ -65,7 +65,7 @@ class URLController {
                 linkTo(methodOn(URLController.class).all()).withRel("urls"));
     }*/
 
-    @GetMapping("/urls/{id}")
+    @GetMapping("/api/urls/{id}")
     public RedirectView redirectUrl(@PathVariable long id, HttpServletRequest request, HttpServletResponse response) throws IOException, URISyntaxException, Exception {
 
         URL url = repository.findById(id) //
@@ -76,7 +76,7 @@ class URLController {
         return redirectView;
     }
 
-    @PutMapping("/urls/{id}")
+    @PutMapping("/api/urls/{id}")
     URL replaceURL(@RequestBody URL newURL, @PathVariable Long id) {
 
         return repository.findById(id)
@@ -91,7 +91,7 @@ class URLController {
                 });
     }
 
-    @DeleteMapping("/urls/{id}")
+    @DeleteMapping("/api/urls/{id}")
     void deleteURL(@PathVariable Long id) {
         repository.deleteById(id);
     }
