@@ -31,7 +31,7 @@ class URLList extends React.Component{
 			<table>
 				<tbody>
 					<tr>
-						<th>Name</th>
+						<th>Long URL</th>
 						<th>Role</th>
 					</tr>
 					{urls}
@@ -45,7 +45,7 @@ class URL extends React.Component{
 	render() {
 		return (
 			<tr>
-				<td>{this.props.url.mame}</td>
+				<td>{this.props.url.longurl}</td>
 				<td>{this.props.url.role}</td>
 			</tr>
 		)
