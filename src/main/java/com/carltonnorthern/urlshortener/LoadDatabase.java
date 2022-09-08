@@ -8,15 +8,16 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 class LoadDatabase {
-    /*
-    private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
+    private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
+/*
     @Bean
     CommandLineRunner initDatabase(URLRepository repository) {
 
         return args -> {
-            log.info("Preloading " + repository.save(new URL("https://www.facebook.com/", "burglar")));
-            log.info("Preloading " + repository.save(new URL("http://www.facebook.com/", "thief")));
+            log.info("Preloading " + repository.save(new Url("https://www.facebook.com/")));
+            log.info("Preloading " + repository.save(new Url("http://www.iscaliforniaonfire.com/")));
         };
-    }*/
+    }
+    */
 }

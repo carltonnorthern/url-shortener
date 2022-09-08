@@ -1,3 +1,5 @@
+'use strict';
+
 const React = require('react');
 const ReactDOM = require('react-dom');
 const client = require('./client');
@@ -32,7 +34,7 @@ class URLList extends React.Component{
 				<tbody>
 					<tr>
 						<th>Long URL</th>
-						<th>Role</th>
+						<th>Short URL</th>
 					</tr>
 					{urls}
 				</tbody>
@@ -45,8 +47,8 @@ class URL extends React.Component{
 	render() {
 		return (
 			<tr>
-				<td>{this.props.url.longurl}</td>
-				<td>{this.props.url.role}</td>
+				<td><a href={this.props.url.longurl}>{this.props.url.longurl}</a></td>
+				<td><a href={this.props.url._links.self.href}>{this.props.url._links.self.href}</a></td>
 			</tr>
 		)
 	}

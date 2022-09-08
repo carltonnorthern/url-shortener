@@ -35,11 +35,11 @@ class URLController {
     // Aggregate root
     // tag::get-aggregate-root[]
     @GetMapping("/api/urls")
-    CollectionModel<EntityModel<URL>> all() {
+    CollectionModel<EntityModel<Url>> all() {
 
-        List<EntityModel<URL>> urls = repository.findAll().stream()
-                .map(URL -> EntityModel.of(URL,
-                        /*linkTo(methodOn(URLController.class).one(URL.getId())).withSelfRel(),*/
+        List<EntityModel<Url>> urls = repository.findAll().stream()
+                .map(Url -> EntityModel.of(Url,
+                        linkTo(methodOn(URLController.class).one(Url.getId())).withSelfRel(),
                         linkTo(methodOn(URLController.class).all()).withRel("urls")))
                 .collect(Collectors.toList());
 
@@ -48,46 +48,45 @@ class URLController {
     // end::get-aggregate-root[]
 
     @PostMapping("/api/urls")
-    URL newURL(@RequestBody URL newURL) {
-        return repository.save(newURL);
+    Url newURL(@RequestBody Url newUrl) {
+        return repository.save(newUrl);
     }
 
     // Single item
 
-    /*@GetMapping("/urls/{id}")
-    EntityModel<URL> one(@PathVariable Long id) {
+    @GetMapping("/api/urls/{id}")
+    EntityModel<Url> one(@PathVariable Long id) {
 
-        URL url = repository.findById(id) //
+        Url url = repository.findById(id) //
                 .orElseThrow(() -> new URLNotFoundException(id));
 
         return EntityModel.of(url, //
                 linkTo(methodOn(URLController.class).one(id)).withSelfRel(),
                 linkTo(methodOn(URLController.class).all()).withRel("urls"));
-    }*/
+    }
 
-    @GetMapping("/api/urls/{id}")
+    /*@GetMapping("/api/urls/{id}")
     public RedirectView redirectUrl(@PathVariable long id, HttpServletRequest request, HttpServletResponse response) throws IOException, URISyntaxException, Exception {
 
-        URL url = repository.findById(id) //
+        Url url = repository.findById(id) //
                 .orElseThrow(() -> new URLNotFoundException(id));
 
         RedirectView redirectView = new RedirectView();
-        redirectView.setUrl(url.getLongURL());
+        redirectView.setUrl(url.getLongurl());
         return redirectView;
-    }
+    }*/
 
     @PutMapping("/api/urls/{id}")
-    URL replaceURL(@RequestBody URL newURL, @PathVariable Long id) {
+    Url replaceURL(@RequestBody Url newUrl, @PathVariable Long id) {
 
         return repository.findById(id)
-                .map(URL -> {
-                    URL.setLongURL(newURL.getLongURL());
-                    URL.setRole(newURL.getRole());
-                    return repository.save(URL);
+                .map(Url -> {
+                    Url.setLongurl(newUrl.getLongurl());
+                    return repository.save(Url);
                 })
                 .orElseGet(() -> {
-                    newURL.setId(id);
-                    return repository.save(newURL);
+                    newUrl.setId(id);
+                    return repository.save(newUrl);
                 });
     }
 
