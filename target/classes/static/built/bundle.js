@@ -34088,6 +34088,9 @@ var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = (function (r
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34179,7 +34182,7 @@ var URLList = /*#__PURE__*/function (_React$Component2) {
           url: url
         });
       });
-      return /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Long URL"), /*#__PURE__*/React.createElement("th", null, "Role")), urls));
+      return /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Long URL"), /*#__PURE__*/React.createElement("th", null, "Short URL")), urls));
     }
   }]);
 
@@ -34200,7 +34203,11 @@ var URL = /*#__PURE__*/function (_React$Component3) {
   _createClass(URL, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, this.props.url.longurl), /*#__PURE__*/React.createElement("td", null, this.props.url.role));
+      return /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("a", {
+        href: this.props.url.longurl
+      }, this.props.url.longurl)), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement("a", {
+        href: this.props.url._links.self.href
+      }, this.props.url._links.self.href)));
     }
   }]);
 
